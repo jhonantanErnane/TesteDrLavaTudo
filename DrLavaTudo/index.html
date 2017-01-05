@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Dr Lava Tudo</title>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
+	<link rel="stylesheet" href="bootstrap/css/index.css">
+</head>
+<body ng-controller="relatorioCtrl">
+	<div class="container">
+		<div>
+			<h2>{{titulo}}</h2>
+			<select ng-change="mudar()" ng-model="listaRelatorios" class="form-control" ng-options="relatorio as relatorio.label for relatorio in relatorios" >
+				<option value="" disabled="" hidden="">-Escolha o que você deseja buscar-</option>
+			</select>	
+
+			<input id="busca" class="form-control x" type="number" ng-hide="busca" ng-model="criterioBusca" placeholder="{{placeholder}}">
+			<button class="btn btn-success " ng-hide="busca" ng-click="procurar()">Procurar</button>
+		</div>
+		<div id="resultado" class="content" ng-hide="clienteOS">
+			<h3>Ordem de Serviço Nº {{os[1][0].idos}} - Emitida dia {{os[1][0].dataemissao | date:'dd/M/y'}}</h3>
+			<div id="dadosCliente">
+				<h4>Dados do Cliente</h4>
+				<table class="table table-bordered">
+					<tr>
+						<td><span>Nome</span></td>
+						<td>{{os[0][0].nome}}</td>
+						<td><span>Data Nascimento</span></td>
+						<td>{{os[0][0].datanasc | date:'dd/M/y'}}</td>
+						<td><span>E-mail</span></td>
+						<td>{{os[0][0].email}}</td>
+					</tr>
+					<tr>
+						<td><span>Tel. Residencial</span></td>
+						<td colspan="2">{{os[0][0].telres}}</td>
+						<td><span>Tel. Celular</span></td>
+						<td colspan="2">{{os[0][0].telcel}}</td>
+					</tr>
+				</table>
+			</div>
+			<div id="endCliente">
+				<h4>Endereço do Cliente</h4>
+				<table class="table table-bordered">
+					<tr>
+						<td><span>Rua</span></td>
+						<td colspan="3">{{os[3][0].rua}}</td>
+						<td><span>Numero</span></td>
+						<td>{{os[3][0].numeroimovel}}</td>
+					</tr>
+					<tr>
+						<td><span>Bairro</span></td>
+						<td>{{os[3][0].bairro}}</td>
+						<td><span>Cidade</span></td>
+						<td>{{os[3][0].cidade}}</td>
+						<td><span>UF</span></td>
+						<td>{{os[3][0].uf}}</td>
+					</tr>
+				</table>
+			</div>
+			<div id="servContratados">
+				<h4>Serviços Contratados</h4>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Cod.Serviço</th>
+							<th>Nome</th>
+							<th>Valor</th>
+							<th>Data Execução</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="iten in itensOs">
+							<td>{{iten.idservico}}</td>
+							<td>{{iten.nome}}</td>
+							<td>{{iten.valorfinal}}</td>
+							<td>{{iten.dataexecucao | date:'dd/M/y'}}</td>
+							
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div id="resultado" ng-hide="ordemServico">
+			<h2>OS's do Cliente {{cliente[0].nome}}</h2>
+			<table class="table table-striped">
+				<thead>
+					<th>Código da OS</th>
+					<th>Data de Contratação</th>
+					<th>Data de execução</th>
+					<th>Data de Emissão</th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="os in cliente">
+						<td>{{os.idos}}</td>
+						<td>{{os.datacontratacao | date:'dd/M/y'}}</td>
+						<td>{{os.dataexecucao | date:'dd/M/y'}}</td>
+						<td>{{os.dataemissao | date:'dd/M/y'}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/angular-route.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

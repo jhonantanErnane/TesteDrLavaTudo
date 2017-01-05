@@ -1,0 +1,15 @@
+.x{
+	width: 50%;
+	margin: 1%;
+	/*margin-right: 0;*/
+	display: initial;
+}
+button{
+	/*margin: 1%;*/
+}
+td{
+	/*padding-left: 1%;*/
+}
+span{
+	font-weight: bold;
+}
