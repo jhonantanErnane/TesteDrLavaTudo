@@ -28,18 +28,19 @@ Numero             |                                 |                          
 
 a. Selecione todos os clientes e a quantidade de ordem de serviços
 
-SELECT CLI.NOME,COUNT(OS.IDOS) 'Quantidade de OS por cliente'
-FROM CLIENTE CLI
-INNER JOIN OS ON CLI.IDCLIENTE=OS.IDCLIENTE
-GROUP BY CLI.NOME
+SELECT CLI.NOME,COUNT(OS.IDOS) 'Quantidade de OS por cliente'	
+FROM CLIENTE CLI	
+INNER JOIN OS ON CLI.IDCLIENTE = OS.IDCLIENTE	
+GROUP BY CLI.NOME	
+
 
 b. Selecione todas as Ordens de Serviços com mais de um serviço
 
-SELECT DISTINCT OS.IDOS 
-FROM OS
-INNER JOIN OSITENS IT ON IT.IDOS = OS.IDOS
-WHERE 
-IT.IDSERVICO >1
+SELECT DISTINCT OS.IDOS	
+FROM OS	
+INNER JOIN OSITENS IT ON IT.IDOS=OS.IDOS	
+WHERE	
+IT.IDSERVICO >1	
 
 c. Selecione os serviços mais vendidos
 
