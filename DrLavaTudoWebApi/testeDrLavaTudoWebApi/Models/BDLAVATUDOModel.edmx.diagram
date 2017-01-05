@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="85055c5b6461493a9d38ce3da5048175" Name="Diagram1">
+        <EntityTypeShape EntityType="BDLAVATUDOModel.CLIENTE" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDLAVATUDOModel.ENDERECO" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDLAVATUDOModel.OS" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDLAVATUDOModel.OSITENS" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDLAVATUDOModel.SERVICO" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <AssociationConnector Association="BDLAVATUDOModel.FK__CLIENTE__CEP__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="BDLAVATUDOModel.FK__OS__IDCLIENTE__145C0A3F" ManuallyRouted="false" />
+        <AssociationConnector Association="BDLAVATUDOModel.FK__OSITENS__CEP__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="BDLAVATUDOModel.FK__OSITENS__IDOS__173876EA" ManuallyRouted="false" />
+        <AssociationConnector Association="BDLAVATUDOModel.FK__OSITENS__IDSERVI__182C9B23" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

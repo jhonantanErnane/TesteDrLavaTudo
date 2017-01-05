@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BDLAVATUDOModelStoreContainer" CdmEntityContainer="BDLAVATUDOEntities">
+    <EntitySetMapping Name="CLIENTE">
+      <EntityTypeMapping TypeName="BDLAVATUDOModel.CLIENTE">
+        <MappingFragment StoreEntitySet="CLIENTE">
+          <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="DATANASC" ColumnName="DATANASC" />
+          <ScalarProperty Name="NOME" ColumnName="NOME" />
+          <ScalarProperty Name="TELCEL" ColumnName="TELCEL" />
+          <ScalarProperty Name="TELRES" ColumnName="TELRES" />
+          <ScalarProperty Name="NUMEROIMOVEL" ColumnName="NUMEROIMOVEL" />
+          <ScalarProperty Name="CEP" ColumnName="CEP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ENDERECO">
+      <EntityTypeMapping TypeName="BDLAVATUDOModel.ENDERECO">
+        <MappingFragment StoreEntitySet="ENDERECO">
+          <ScalarProperty Name="CEP" ColumnName="CEP" />
+          <ScalarProperty Name="RUA" ColumnName="RUA" />
+          <ScalarProperty Name="BAIRRO" ColumnName="BAIRRO" />
+          <ScalarProperty Name="CIDADE" ColumnName="CIDADE" />
+          <ScalarProperty Name="UF" ColumnName="UF" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OS">
+      <EntityTypeMapping TypeName="BDLAVATUDOModel.OS">
+        <MappingFragment StoreEntitySet="OS">
+          <ScalarProperty Name="IDOS" ColumnName="IDOS" />
+          <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+          <ScalarProperty Name="DATAEMISSAO" ColumnName="DATAEMISSAO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OSITENS">
+      <EntityTypeMapping TypeName="BDLAVATUDOModel.OSITENS">
+        <MappingFragment StoreEntitySet="OSITENS">
+          <ScalarProperty Name="IDOSIT" ColumnName="IDOSIT" />
+          <ScalarProperty Name="IDOS" ColumnName="IDOS" />
+          <ScalarProperty Name="IDSERVICO" ColumnName="IDSERVICO" />
+          <ScalarProperty Name="CEP" ColumnName="CEP" />
+          <ScalarProperty Name="DATACONTRATACAO" ColumnName="DATACONTRATACAO" />
+          <ScalarProperty Name="DATAEXECUCAO" ColumnName="DATAEXECUCAO" />
+          <ScalarProperty Name="NUMEROIMOVEL" ColumnName="NUMEROIMOVEL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SERVICO">
+      <EntityTypeMapping TypeName="BDLAVATUDOModel.SERVICO">
+        <MappingFragment StoreEntitySet="SERVICO">
+          <ScalarProperty Name="IDSERVICO" ColumnName="IDSERVICO" />
+          <ScalarProperty Name="CUSTOEMPRESA" ColumnName="CUSTOEMPRESA" />
+          <ScalarProperty Name="NOME" ColumnName="NOME" />
+          <ScalarProperty Name="VALORFINAL" ColumnName="VALORFINAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BDLAVATUDOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CLIENTE">
+    <Key>
+      <PropertyRef Name="IDCLIENTE" />
+    </Key>
+    <Property Name="IDCLIENTE" Type="int" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="255" />
+    <Property Name="DATANASC" Type="date" />
+    <Property Name="NOME" Type="varchar" MaxLength="255" />
+    <Property Name="TELCEL" Type="bigint" />
+    <Property Name="TELRES" Type="bigint" />
+    <Property Name="NUMEROIMOVEL" Type="int" />
+    <Property Name="CEP" Type="bigint" />
+  </EntityType>
+  <EntityType Name="ENDERECO">
+    <Key>
+      <PropertyRef Name="CEP" />
+    </Key>
+    <Property Name="CEP" Type="bigint" Nullable="false" />
+    <Property Name="RUA" Type="varchar" MaxLength="255" />
+    <Property Name="BAIRRO" Type="varchar" MaxLength="255" />
+    <Property Name="CIDADE" Type="varchar" MaxLength="255" />
+    <Property Name="UF" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="OS">
+    <Key>
+      <PropertyRef Name="IDOS" />
+    </Key>
+    <Property Name="IDOS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDCLIENTE" Type="int" />
+    <Property Name="DATAEMISSAO" Type="date" />
+  </EntityType>
+  <EntityType Name="OSITENS">
+    <Key>
+      <PropertyRef Name="IDOSIT" />
+    </Key>
+    <Property Name="IDOSIT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDOS" Type="int" />
+    <Property Name="IDSERVICO" Type="int" />
+    <Property Name="CEP" Type="bigint" />
+    <Property Name="DATACONTRATACAO" Type="date" />
+    <Property Name="DATAEXECUCAO" Type="date" />
+    <Property Name="NUMEROIMOVEL" Type="int" />
+  </EntityType>
+  <EntityType Name="SERVICO">
+    <Key>
+      <PropertyRef Name="IDSERVICO" />
+    </Key>
+    <Property Name="IDSERVICO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CUSTOEMPRESA" Type="float" />
+    <Property Name="NOME" Type="varchar" MaxLength="255" />
+    <Property Name="VALORFINAL" Type="float" />
+  </EntityType>
+  <Association Name="FK__CLIENTE__CEP__1B0907CE">
+    <End Role="ENDERECO" Type="Self.ENDERECO" Multiplicity="0..1" />
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ENDERECO">
+        <PropertyRef Name="CEP" />
+      </Principal>
+      <Dependent Role="CLIENTE">
+        <PropertyRef Name="CEP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OS__IDCLIENTE__145C0A3F">
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="0..1" />
+    <End Role="OS" Type="Self.OS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="IDCLIENTE" />
+      </Principal>
+      <Dependent Role="OS">
+        <PropertyRef Name="IDCLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OSITENS__CEP__1BFD2C07">
+    <End Role="ENDERECO" Type="Self.ENDERECO" Multiplicity="0..1" />
+    <End Role="OSITENS" Type="Self.OSITENS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ENDERECO">
+        <PropertyRef Name="CEP" />
+      </Principal>
+      <Dependent Role="OSITENS">
+        <PropertyRef Name="CEP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OSITENS__IDOS__173876EA">
+    <End Role="OS" Type="Self.OS" Multiplicity="0..1" />
+    <End Role="OSITENS" Type="Self.OSITENS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OS">
+        <PropertyRef Name="IDOS" />
+      </Principal>
+      <Dependent Role="OSITENS">
+        <PropertyRef Name="IDOS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OSITENS__IDSERVI__182C9B23">
+    <End Role="SERVICO" Type="Self.SERVICO" Multiplicity="0..1" />
+    <End Role="OSITENS" Type="Self.OSITENS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SERVICO">
+        <PropertyRef Name="IDSERVICO" />
+      </Principal>
+      <Dependent Role="OSITENS">
+        <PropertyRef Name="IDSERVICO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BDLAVATUDOModelStoreContainer">
+    <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ENDERECO" EntityType="Self.ENDERECO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OS" EntityType="Self.OS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OSITENS" EntityType="Self.OSITENS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SERVICO" EntityType="Self.SERVICO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__CLIENTE__CEP__1B0907CE" Association="Self.FK__CLIENTE__CEP__1B0907CE">
+      <End Role="ENDERECO" EntitySet="ENDERECO" />
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OS__IDCLIENTE__145C0A3F" Association="Self.FK__OS__IDCLIENTE__145C0A3F">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="OS" EntitySet="OS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OSITENS__CEP__1BFD2C07" Association="Self.FK__OSITENS__CEP__1BFD2C07">
+      <End Role="ENDERECO" EntitySet="ENDERECO" />
+      <End Role="OSITENS" EntitySet="OSITENS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OSITENS__IDOS__173876EA" Association="Self.FK__OSITENS__IDOS__173876EA">
+      <End Role="OS" EntitySet="OS" />
+      <End Role="OSITENS" EntitySet="OSITENS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OSITENS__IDSERVI__182C9B23" Association="Self.FK__OSITENS__IDSERVI__182C9B23">
+      <End Role="SERVICO" EntitySet="SERVICO" />
+      <End Role="OSITENS" EntitySet="OSITENS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
